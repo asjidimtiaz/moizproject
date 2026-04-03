@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ufs3tifS6TA-zP0GlGun6"
+uri = "file://artifacts/daycare-website/public/images/hero.png"
+type = "image"
+title = "Daycare classroom hero image"
+
+[[generated]]
+id = "i0wVUbDFlu2-h4j720ODP"
+uri = "file://artifacts/daycare-website/public/images/staff-1.png"
+type = "image"
+title = "Daycare director portrait"
+
+[[generated]]
+id = "4buHg1Qa-8CvWMA3T8GNO"
+uri = "file://artifacts/daycare-website/public/images/staff-2.png"
+type = "image"
+title = "Preschool teacher portrait"
+
+[[generated]]
+id = "WrG4KtbtQTfzC1ahymEY1"
+uri = "file://artifacts/daycare-website/public/images/staff-3.png"
+type = "image"
+title = "Toddler teacher portrait"
+
+[[generated]]
+id = "zF2w7boo1i54BbvyzcKax"
+uri = "file://artifacts/daycare-website/public/images/staff-4.png"
+type = "image"
+title = "Infant caregiver portrait"
+
+[[generated]]
+id = "1CvkkmZm5KoIs3UM9XA86"
+uri = "file://artifacts/daycare-website/public/images/program-infant.png"
+type = "image"
+title = "Infant program room"
+
+[[generated]]
+id = "yXeyXRn7YZF0y6DI6MCy7"
+uri = "file://artifacts/daycare-website/public/images/program-toddler.png"
+type = "image"
+title = "Toddler program room"
+
+[[generated]]
+id = "GNWSw-7ZdV0gySg2npBZY"
+uri = "file://artifacts/daycare-website/public/images/program-preschool.png"
+type = "image"
+title = "Preschool program room"
+
+[[generated]]
+id = "hfYis9CQijsoRlzKWqL_A"
+uri = "file://artifacts/daycare-website/public/images/program-prek.png"
+type = "image"
+title = "Pre-K program room"
+
+[[generated]]
+id = "ZDnbgBxjDCiSlbNVar24u"
+uri = "file://artifacts/daycare-website/public/images/gallery-1.png"
+type = "image"
+title = "Kids painting activity"

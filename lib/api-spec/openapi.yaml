@@ -3,20 +3,36 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Little Stars Daycare API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: programs
+    description: Daycare programs
+  - name: enrollments
+    description: Enrollment requests
+  - name: staff
+    description: Staff members
+  - name: gallery
+    description: Photo gallery
+  - name: testimonials
+    description: Parent testimonials
+  - name: events
+    description: Upcoming events
+  - name: contact
+    description: Contact messages
+  - name: stats
+    description: Dashboard statistics
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +40,182 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /programs:
+    get:
+      operationId: listPrograms
+      tags: [programs]
+      summary: List all daycare programs
+      responses:
+        "200":
+          description: List of programs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Program"
+    post:
+      operationId: createProgram
+      tags: [programs]
+      summary: Create a new program
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProgramBody"
+      responses:
+        "201":
+          description: Program created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Program"
+
+  /programs/{id}:
+    get:
+      operationId: getProgram
+      tags: [programs]
+      summary: Get a program by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Program details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Program"
+
+  /enrollments:
+    get:
+      operationId: listEnrollments
+      tags: [enrollments]
+      summary: List enrollment requests
+      responses:
+        "200":
+          description: List of enrollments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Enrollment"
+    post:
+      operationId: createEnrollment
+      tags: [enrollments]
+      summary: Submit enrollment request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateEnrollmentBody"
+      responses:
+        "201":
+          description: Enrollment submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enrollment"
+
+  /staff:
+    get:
+      operationId: listStaff
+      tags: [staff]
+      summary: List all staff members
+      responses:
+        "200":
+          description: List of staff
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StaffMember"
+
+  /gallery:
+    get:
+      operationId: listGallery
+      tags: [gallery]
+      summary: List gallery photos
+      responses:
+        "200":
+          description: Gallery photos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GalleryPhoto"
+
+  /testimonials:
+    get:
+      operationId: listTestimonials
+      tags: [testimonials]
+      summary: List parent testimonials
+      responses:
+        "200":
+          description: Testimonials list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Testimonial"
+
+  /events:
+    get:
+      operationId: listEvents
+      tags: [events]
+      summary: List upcoming events
+      responses:
+        "200":
+          description: Events list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Event"
+
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit contact form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateContactBody"
+      responses:
+        "201":
+          description: Contact message submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactMessage"
+
+  /stats:
+    get:
+      operationId: getStats
+      tags: [stats]
+      summary: Get daycare stats
+      responses:
+        "200":
+          description: Daycare statistics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DaycareStats"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +226,334 @@ components:
       required:
         - status
 
+    Program:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        ageRange:
+          type: string
+        description:
+          type: string
+        schedule:
+          type: string
+        monthlyFee:
+          type: number
+        capacity:
+          type: integer
+        enrolled:
+          type: integer
+        imageUrl:
+          type: string
+          nullable: true
+        features:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - ageRange
+        - description
+        - schedule
+        - monthlyFee
+        - capacity
+        - enrolled
+        - features
+        - createdAt
+
+    CreateProgramBody:
+      type: object
+      properties:
+        name:
+          type: string
+        ageRange:
+          type: string
+        description:
+          type: string
+        schedule:
+          type: string
+        monthlyFee:
+          type: number
+        capacity:
+          type: integer
+        imageUrl:
+          type: string
+          nullable: true
+        features:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - ageRange
+        - description
+        - schedule
+        - monthlyFee
+        - capacity
+        - features
+
+    Enrollment:
+      type: object
+      properties:
+        id:
+          type: integer
+        parentName:
+          type: string
+        parentEmail:
+          type: string
+        parentPhone:
+          type: string
+        childName:
+          type: string
+        childAge:
+          type: integer
+        childDateOfBirth:
+          type: string
+        programId:
+          type: integer
+        programName:
+          type: string
+        startDate:
+          type: string
+        specialNeeds:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [pending, approved, waitlisted, rejected]
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - parentName
+        - parentEmail
+        - parentPhone
+        - childName
+        - childAge
+        - childDateOfBirth
+        - programId
+        - programName
+        - startDate
+        - status
+        - createdAt
+
+    CreateEnrollmentBody:
+      type: object
+      properties:
+        parentName:
+          type: string
+        parentEmail:
+          type: string
+        parentPhone:
+          type: string
+        childName:
+          type: string
+        childAge:
+          type: integer
+        childDateOfBirth:
+          type: string
+        programId:
+          type: integer
+        startDate:
+          type: string
+        specialNeeds:
+          type: string
+          nullable: true
+      required:
+        - parentName
+        - parentEmail
+        - parentPhone
+        - childName
+        - childAge
+        - childDateOfBirth
+        - programId
+        - startDate
+
+    StaffMember:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
+          type: string
+        bio:
+          type: string
+        yearsExperience:
+          type: integer
+        education:
+          type: string
+        imageUrl:
+          type: string
+          nullable: true
+        certifications:
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - name
+        - role
+        - bio
+        - yearsExperience
+        - education
+        - certifications
+
+    GalleryPhoto:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        caption:
+          type: string
+        category:
+          type: string
+          enum: [activities, outdoor, learning, events, meals]
+      required:
+        - id
+        - url
+        - caption
+        - category
+
+    Testimonial:
+      type: object
+      properties:
+        id:
+          type: integer
+        parentName:
+          type: string
+        childName:
+          type: string
+        rating:
+          type: integer
+        review:
+          type: string
+        programName:
+          type: string
+        avatarUrl:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - parentName
+        - childName
+        - rating
+        - review
+        - programName
+        - createdAt
+
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+        time:
+          type: string
+        location:
+          type: string
+        type:
+          type: string
+          enum: [open-house, holiday, workshop, field-trip, celebration]
+      required:
+        - id
+        - title
+        - description
+        - date
+        - time
+        - location
+        - type
+
+    ContactMessage:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+          nullable: true
+        subject:
+          type: string
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - email
+        - subject
+        - message
+        - createdAt
+
+    CreateContactBody:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+          nullable: true
+        subject:
+          type: string
+        message:
+          type: string
+      required:
+        - name
+        - email
+        - subject
+        - message
+
+    DaycareStats:
+      type: object
+      properties:
+        totalChildren:
+          type: integer
+        totalStaff:
+          type: integer
+        totalPrograms:
+          type: integer
+        yearsInOperation:
+          type: integer
+        availableSpots:
+          type: integer
+        totalEnrollments:
+          type: integer
+        pendingEnrollments:
+          type: integer
+        satisfactionRate:
+          type: number
+      required:
+        - totalChildren
+        - totalStaff
+        - totalPrograms
+        - yearsInOperation
+        - availableSpots
+        - totalEnrollments
+        - pendingEnrollments
+        - satisfactionRate

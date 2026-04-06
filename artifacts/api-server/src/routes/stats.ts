@@ -1,11 +1,11 @@
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request, type Response } from "express";
 import { db, programsTable, enrollmentsTable, staffTable } from "@workspace/db";
 import { GetStatsResponse } from "@workspace/api-zod";
 import { eq, count, sum } from "drizzle-orm";
 
 const router: IRouter = Router();
 
-router.get("/stats", async (_req, res): Promise<void> => {
+router.get("/stats", async (_req: Request, res: Response): Promise<void> => {
   const [programResult] = await db.select({ count: count() }).from(programsTable);
   const [staffResult] = await db.select({ count: count() }).from(staffTable);
   const [enrollmentResult] = await db.select({ count: count() }).from(enrollmentsTable);

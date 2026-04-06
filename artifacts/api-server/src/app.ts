@@ -1,7 +1,8 @@
 import express, { type Express } from "express";
 import cors from "cors";
 import path from "path";
-import pinoHttp from "pino-http";
+import { pinoHttp } from "pino-http";
+import type { IncomingMessage, ServerResponse } from "http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
@@ -11,14 +12,14 @@ app.use(
   pinoHttp({
     logger,
     serializers: {
-      req(req) {
+      req(req: IncomingMessage) {
         return {
-          id: req.id,
+          id: (req as any).id,
           method: req.method,
           url: req.url?.split("?")[0],
         };
       },
-      res(res) {
+      res(res: ServerResponse) {
         return {
           statusCode: res.statusCode,
         };
@@ -32,5 +33,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use("/api", router);
+
+app.use(express.static(path.join(process.cwd(), "artifacts", "daycare-website", "dist", "public")));
+
+// Catch-all fallback for React Single Page Application
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api')) {
+    res.sendFile(path.join(process.cwd(), "artifacts", "daycare-website", "dist", "public", "index.html"));
+  } else {
+    next();
+  }
+});
 
 export default app;

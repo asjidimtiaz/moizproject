@@ -96,6 +96,8 @@ async function buildAll() {
       "wrangler",
       "zeromq",
       "zeromq-prebuilt",
+      "libsql",
+      "@libsql/client",
       "playwright",
       "puppeteer",
       "puppeteer-core",

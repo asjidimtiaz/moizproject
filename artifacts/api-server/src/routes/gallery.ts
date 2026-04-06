@@ -1,34 +1,21 @@
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request, type Response } from "express";
 import { eq } from "drizzle-orm";
 import { db, galleryTable } from "@workspace/db";
 import { ListGalleryResponse } from "@workspace/api-zod";
 import multer from "multer";
-import path from "path";
-import fs from "fs";
+import { put, del } from "@vercel/blob";
 
 const router: IRouter = Router();
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(process.cwd(), "uploads");
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir)
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, uniqueSuffix + path.extname(file.originalname))
-  }
-});
-const upload = multer({ storage: storage });
+// Store files in memory so we can push them to Vercel Blob
+const upload = multer({ storage: multer.memoryStorage() });
 
-router.get("/gallery", async (_req, res): Promise<void> => {
+router.get("/gallery", async (_req: Request, res: Response): Promise<void> => {
   const photos = await db.select().from(galleryTable).orderBy(galleryTable.id);
   res.json(ListGalleryResponse.parse(photos));
 });
 
-router.post("/gallery", upload.single('image'), async (req, res): Promise<void> => {
+router.post("/gallery", upload.single('image'), async (req: Request, res: Response): Promise<void> => {
   if (!req.file) {
     res.status(400).json({ error: "Image file is required" });
     return;
@@ -40,19 +27,29 @@ router.post("/gallery", upload.single('image'), async (req, res): Promise<void> 
     return;
   }
 
-  const url = `/api/uploads/${req.file.filename}`;
+  try {
+    // Upload the file buffer to Vercel Blob
+    const blob = await put(req.file.originalname, req.file.buffer, {
+      access: 'public',
+      // Provide a clean random suffix
+      addRandomSuffix: true
+    });
 
-  const [photo] = await db.insert(galleryTable).values({
-    url,
-    caption,
-    category
-  }).returning();
-  
-  res.status(201).json(photo);
+    const [photo] = await db.insert(galleryTable).values({
+      url: blob.url,
+      caption,
+      category
+    }).returning();
+    
+    res.status(201).json(photo);
+  } catch (err) {
+    console.error("Vercel Blob Upload Error:", err);
+    res.status(500).json({ error: "Failed to upload image" });
+  }
 });
 
-router.delete("/gallery/:id", async (req, res): Promise<void> => {
-  const idValue = parseInt(req.params.id, 10);
+router.delete("/gallery/:id", async (req: Request, res: Response): Promise<void> => {
+  const idValue = parseInt(String(req.params.id), 10);
   if (isNaN(idValue)) {
     res.status(400).json({ error: "Invalid id" });
     return;
@@ -69,19 +66,13 @@ router.delete("/gallery/:id", async (req, res): Promise<void> => {
   // Delete from database
   const [deletedPhoto] = await db.delete(galleryTable).where(eq(galleryTable.id, idValue)).returning();
   
-  // If deletion from DB was successful, delete the physical file
-  if (deletedPhoto) {
-    const filename = deletedPhoto.url.split("/").pop();
-    if (filename) {
-      const filePath = path.join(process.cwd(), "uploads", filename);
-      try {
-        if (fs.existsSync(filePath)) {
-          fs.unlinkSync(filePath);
-        }
-      } catch (err) {
-        console.error("Failed to delete physical file:", filePath, err);
-        // We still return 204 because the DB entry is gone
-      }
+  // If deletion from DB was successful, delete the blob from Vercel storage
+  if (deletedPhoto && deletedPhoto.url) {
+    try {
+      await del(deletedPhoto.url);
+    } catch (err) {
+      console.error("Failed to delete Vercel Blob:", deletedPhoto.url, err);
+      // We still return 204 because the DB entry is gone
     }
   }
 

@@ -1,4 +1,4 @@
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request, type Response } from "express";
 import { eq } from "drizzle-orm";
 import { db, eventsTable } from "@workspace/db";
 import { ListEventsResponse } from "@workspace/api-zod";
@@ -16,12 +16,12 @@ const CreateEventBody = z.object({
   type: z.enum(["open-house", "holiday", "workshop", "field-trip", "celebration"]),
 });
 
-router.get("/events", async (_req, res): Promise<void> => {
+router.get("/events", async (_req: Request, res: Response): Promise<void> => {
   const events = await db.select().from(eventsTable).orderBy(eventsTable.date);
   res.json(ListEventsResponse.parse(events));
 });
 
-router.post("/events", async (req, res): Promise<void> => {
+router.post("/events", async (req: Request, res: Response): Promise<void> => {
   const parsed = CreateEventBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.issues });
@@ -31,8 +31,8 @@ router.post("/events", async (req, res): Promise<void> => {
   res.status(201).json(event);
 });
 
-router.delete("/events/:id", async (req, res): Promise<void> => {
-  const idValue = parseInt(req.params.id, 10);
+router.delete("/events/:id", async (req: Request, res: Response): Promise<void> => {
+  const idValue = parseInt(String(req.params.id), 10);
   if (isNaN(idValue)) {
     res.status(400).json({ error: "Invalid id" });
     return;

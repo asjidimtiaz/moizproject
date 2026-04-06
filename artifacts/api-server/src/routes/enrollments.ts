@@ -1,4 +1,4 @@
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request, type Response } from "express";
 import { eq } from "drizzle-orm";
 import { db, enrollmentsTable, programsTable } from "@workspace/db";
 import {
@@ -8,12 +8,12 @@ import {
 
 const router: IRouter = Router();
 
-router.get("/enrollments", async (_req, res): Promise<void> => {
+router.get("/enrollments", async (_req: Request, res: Response): Promise<void> => {
   const enrollments = await db.select().from(enrollmentsTable).orderBy(enrollmentsTable.createdAt);
   res.json(ListEnrollmentsResponse.parse(enrollments));
 });
 
-router.post("/enrollments", async (req, res): Promise<void> => {
+router.post("/enrollments", async (req: Request, res: Response): Promise<void> => {
   const parsed = CreateEnrollmentBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.message });
@@ -32,8 +32,8 @@ router.post("/enrollments", async (req, res): Promise<void> => {
   res.status(201).json(enrollment);
 });
 
-router.delete("/enrollments/:id", async (req, res): Promise<void> => {
-  const idValue = parseInt(req.params.id, 10);
+router.delete("/enrollments/:id", async (req: Request, res: Response): Promise<void> => {
+  const idValue = parseInt(String(req.params.id), 10);
   if (isNaN(idValue)) {
     res.status(400).json({ error: "Invalid id" });
     return;

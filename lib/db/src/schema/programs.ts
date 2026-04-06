@@ -1,9 +1,9 @@
-import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
+import { pgTable, text, serial, integer, real, json, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
-export const programsTable = sqliteTable("programs", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const programsTable = pgTable("programs", {
+  id: serial("id").primaryKey(),
   name: text("name").notNull(),
   ageRange: text("age_range").notNull(),
   description: text("description").notNull(),
@@ -12,10 +12,11 @@ export const programsTable = sqliteTable("programs", {
   capacity: integer("capacity").notNull(),
   enrolled: integer("enrolled").notNull().default(0),
   imageUrl: text("image_url"),
-  features: text("features", { mode: 'json' }).$type<string[]>().notNull().default([]),
-  createdAt: integer("created_at", { mode: 'timestamp' }).notNull().$defaultFn(() => new Date()),
+  features: json("features").$type<string[]>().notNull().default([]),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
 export const insertProgramSchema = createInsertSchema(programsTable).omit({ id: true, createdAt: true });
 export type InsertProgram = z.infer<typeof insertProgramSchema>;
 export type Program = typeof programsTable.$inferSelect;
+

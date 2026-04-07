@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
 import path from "path";
 import { pinoHttp } from "pino-http";
@@ -37,7 +37,7 @@ app.use("/api", router);
 app.use(express.static(path.join(process.cwd(), "artifacts", "daycare-website", "dist", "public")));
 
 // Catch-all fallback for React Single Page Application
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   if (req.method === 'GET' && !req.path.startsWith('/api')) {
     res.sendFile(path.join(process.cwd(), "artifacts", "daycare-website", "dist", "public", "index.html"));
   } else {

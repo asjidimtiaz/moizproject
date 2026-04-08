@@ -8,9 +8,8 @@
   },
   "scripts": {
     "build": "pnpm -r --if-present run build",
-    "build:vercel": "pnpm --filter @workspace/api-server run build && pnpm --filter @workspace/daycare-website run build",
+    "build:vercel": "pnpm --filter @workspace/api-server run build && pnpm --filter @workspace/daycare-website run build && (if exist dist-vercel rmdir /s /q dist-vercel) && mkdir dist-vercel && xcopy /E /I artifacts\\daycare-website\\dist\\public dist-vercel\\",
     "dev": "pnpm -r --parallel --filter @workspace/api-server --filter @workspace/daycare-website run dev",
-    "start": "node ./artifacts/api-server/dist/index.mjs",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --if-present run typecheck"
   },

@@ -1,7 +1,6 @@
 {
   "version": 2,
   "buildCommand": "pnpm -w run build:vercel",
-  "outputDirectory": "dist-vercel",
   "rewrites": [
     {
       "source": "/api/(.*)",

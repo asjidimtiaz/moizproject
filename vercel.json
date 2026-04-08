@@ -2,6 +2,12 @@
   "version": 2,
   "buildCommand": "pnpm -w run build:vercel",
   "outputDirectory": "public",
+  "functions": {
+    "api/index.ts": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "pnpm -r --if-present run build",
-    "build:vercel": "pnpm --filter @workspace/daycare-website run build && rm -rf public && cp -r artifacts/daycare-website/dist/public public",
+    "build:vercel": "pnpm --filter @workspace/daycare-website run build",
     "dev": "pnpm -r --parallel --filter @workspace/api-server --filter @workspace/daycare-website run dev",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --if-present run typecheck"

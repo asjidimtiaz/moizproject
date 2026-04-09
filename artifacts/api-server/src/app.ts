@@ -34,12 +34,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use("/api", router);
 
-app.use(express.static(path.join(process.cwd(), "artifacts", "daycare-website", "dist", "public")));
+app.use(express.static(path.join(process.cwd(), "public")));
 
 // Catch-all fallback for React Single Page Application
 app.use((req: any, res: any, next: any) => {
   if (req.method === 'GET' && !req.path.startsWith('/api')) {
-    res.sendFile(path.join(process.cwd(), "artifacts", "daycare-website", "dist", "public", "index.html"));
+    res.sendFile(path.join(process.cwd(), "public", "index.html"));
   } else {
     next();
   }

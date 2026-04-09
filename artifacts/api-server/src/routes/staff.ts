@@ -4,7 +4,7 @@ import { ListStaffResponse } from "@workspace/api-zod";
 
 const router = Router();
 
-router.get("/staff", async (_req: Request, res: Response): Promise<void> => {
+router.get("/staff", async (_req: any, res: any): Promise<void> => {
   const staff = await db.select().from(staffTable).orderBy(staffTable.id);
   res.json(ListStaffResponse.parse(staff));
 });

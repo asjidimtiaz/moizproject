@@ -10,12 +10,12 @@ const router = Router();
 // Store files in memory so we can push them to Vercel Blob
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.get("/gallery", async (_req: Request, res: Response): Promise<void> => {
+router.get("/gallery", async (_req: any, res: any): Promise<void> => {
   const photos = await db.select().from(galleryTable).orderBy(galleryTable.id);
   res.json(ListGalleryResponse.parse(photos));
 });
 
-router.post("/gallery", upload.single('image'), async (req: Request, res: Response): Promise<void> => {
+router.post("/gallery", upload.single('image'), async (req: any, res: any): Promise<void> => {
   if (!req.file) {
     res.status(400).json({ error: "Image file is required" });
     return;
@@ -48,7 +48,7 @@ router.post("/gallery", upload.single('image'), async (req: Request, res: Respon
   }
 });
 
-router.delete("/gallery/:id", async (req: Request, res: Response): Promise<void> => {
+router.delete("/gallery/:id", async (req: any, res: any): Promise<void> => {
   const idValue = parseInt(String(req.params.id), 10);
   if (isNaN(idValue)) {
     res.status(400).json({ error: "Invalid id" });

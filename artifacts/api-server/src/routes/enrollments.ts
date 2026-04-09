@@ -8,12 +8,12 @@ import {
 
 const router = Router();
 
-router.get("/enrollments", async (_req: Request, res: Response): Promise<void> => {
+router.get("/enrollments", async (_req: any, res: any): Promise<void> => {
   const enrollments = await db.select().from(enrollmentsTable).orderBy(enrollmentsTable.createdAt);
   res.json(ListEnrollmentsResponse.parse(enrollments));
 });
 
-router.post("/enrollments", async (req: Request, res: Response): Promise<void> => {
+router.post("/enrollments", async (req: any, res: any): Promise<void> => {
   const parsed = CreateEnrollmentBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.message });
@@ -32,7 +32,7 @@ router.post("/enrollments", async (req: Request, res: Response): Promise<void> =
   res.status(201).json(enrollment);
 });
 
-router.delete("/enrollments/:id", async (req: Request, res: Response): Promise<void> => {
+router.delete("/enrollments/:id", async (req: any, res: any): Promise<void> => {
   const idValue = parseInt(String(req.params.id), 10);
   if (isNaN(idValue)) {
     res.status(400).json({ error: "Invalid id" });

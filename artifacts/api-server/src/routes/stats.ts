@@ -5,7 +5,7 @@ import { eq, count, sum } from "drizzle-orm";
 
 const router = Router();
 
-router.get("/stats", async (_req: Request, res: Response): Promise<void> => {
+router.get("/stats", async (_req: any, res: any): Promise<void> => {
   const [programResult] = await db.select({ count: count() }).from(programsTable);
   const [staffResult] = await db.select({ count: count() }).from(staffTable);
   const [enrollmentResult] = await db.select({ count: count() }).from(enrollmentsTable);

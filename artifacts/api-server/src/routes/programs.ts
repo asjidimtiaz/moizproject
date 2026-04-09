@@ -10,12 +10,12 @@ import {
 
 const router = Router();
 
-router.get("/programs", async (_req: Request, res: Response): Promise<void> => {
+router.get("/programs", async (_req: any, res: any): Promise<void> => {
   const programs = await db.select().from(programsTable).orderBy(programsTable.id);
   res.json(ListProgramsResponse.parse(programs));
 });
 
-router.post("/programs", async (req: Request, res: Response): Promise<void> => {
+router.post("/programs", async (req: any, res: any): Promise<void> => {
   const parsed = CreateProgramBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.message });
@@ -25,7 +25,7 @@ router.post("/programs", async (req: Request, res: Response): Promise<void> => {
   res.status(201).json(GetProgramResponse.parse(program));
 });
 
-router.get("/programs/:id", async (req: Request, res: Response): Promise<void> => {
+router.get("/programs/:id", async (req: any, res: any): Promise<void> => {
   const rawId = req.params.id;
   const idString = Array.isArray(rawId) ? rawId[0] : rawId;
   const params = GetProgramParams.safeParse({ id: parseInt(idString as string, 10) });

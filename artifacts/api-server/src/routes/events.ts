@@ -1,10 +1,10 @@
-import { Router, type IRouter, type Request, type Response } from "express";
+import { Router, Request, Response } from "express";
 import { eq } from "drizzle-orm";
 import { db, eventsTable } from "@workspace/db";
 import { ListEventsResponse } from "@workspace/api-zod";
 import { z } from "zod";
 
-const router: IRouter = Router();
+const router = Router();
 
 // Minimal validation for incoming request
 const CreateEventBody = z.object({

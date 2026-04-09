@@ -1,11 +1,11 @@
-import { Router, type IRouter, type Request, type Response } from "express";
+import { Router, Request, Response } from "express";
 import { eq } from "drizzle-orm";
 import { db, galleryTable } from "@workspace/db";
 import { ListGalleryResponse } from "@workspace/api-zod";
 import multer from "multer";
 import { put, del } from "@vercel/blob";
 
-const router: IRouter = Router();
+const router = Router();
 
 // Store files in memory so we can push them to Vercel Blob
 const upload = multer({ storage: multer.memoryStorage() });

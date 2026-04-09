@@ -1,9 +1,9 @@
-import { Router, type IRouter, type Request, type Response } from "express";
+import { Router, Request, Response } from "express";
 import { eq } from "drizzle-orm";
 import { db, contactTable } from "@workspace/db";
 import { SubmitContactBody } from "@workspace/api-zod";
 
-const router: IRouter = Router();
+const router = Router();
 
 router.get("/contact", async (_req: Request, res: Response): Promise<void> => {
   const contacts = await db.select().from(contactTable).orderBy(contactTable.createdAt);

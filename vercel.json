@@ -2,7 +2,7 @@
   "version": 2,
   "framework": null,
   "buildCommand": "pnpm -w run build:vercel",
-  "outputDirectory": "vercel-dist",
+  "outputDirectory": "artifacts/daycare-website/dist",
   "functions": {
     "api/index.ts": {
       "memory": 1024,

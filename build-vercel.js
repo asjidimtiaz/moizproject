@@ -10,13 +10,4 @@ try {
   execSync('pnpm --filter @workspace/daycare-website run build', { stdio: 'inherit' });
 }
 
-const src = path.join(__dirname, 'artifacts', 'daycare-website', 'dist');
-const dest = path.join(__dirname, 'vercel-dist');
-
-if (fs.existsSync(dest)) {
-    fs.rmSync(dest, { recursive: true, force: true });
-}
-
-console.log(`Copying ${src} to ${dest}...`);
-fs.cpSync(src, dest, { recursive: true });
-console.log("Done building and moving static assets for Vercel!");
+console.log("Done building static assets for Vercel!");

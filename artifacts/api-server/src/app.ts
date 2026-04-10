@@ -45,4 +45,14 @@ app.use((req: any, res: any, next: any) => {
   }
 });
 
+// Global API Error Handler
+app.use((err: any, req: any, res: any, next: any) => {
+  console.error("API Error encountered:", err);
+  if (req.path.startsWith('/api')) {
+    res.status(500).json({ error: err.message || "Internal Server Error", stack: err.stack });
+  } else {
+    next(err);
+  }
+});
+
 export default app;

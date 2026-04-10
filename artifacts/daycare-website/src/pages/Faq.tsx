@@ -14,7 +14,7 @@ const faqs = [
     category: "Enrollment & Admissions",
     questions: [
       {
-        q: "How do I enroll my child at Little Stars?",
+        q: "How do I enroll my child at the daycare?",
         a: "Start by completing our online enrollment application — it takes about 10 minutes. Once submitted, our director will contact you within 2 business days to schedule a tour and discuss your child's specific needs and available program spots."
       },
       {
@@ -99,7 +99,7 @@ export default function Faq() {
             Frequently Asked Questions
           </h1>
           <p className="text-xl text-primary/80">
-            Everything you need to know about Little Stars Daycare. Can't find your answer? We're always happy to help.
+            Everything you need to know about our daycare. Can't find your answer? We're always happy to help.
           </p>
         </div>
       </div>

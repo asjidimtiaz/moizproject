@@ -23,7 +23,7 @@ router.get("/stats", async (_req: any, res: any): Promise<void> => {
     totalChildren,
     totalStaff: staffResult.count,
     totalPrograms: programResult.count,
-    yearsInOperation: 15,
+    yearsInOperation: 3,
     availableSpots: Math.max(0, availableSpots),
     totalEnrollments: enrollmentResult.count,
     pendingEnrollments: pendingResult.count,

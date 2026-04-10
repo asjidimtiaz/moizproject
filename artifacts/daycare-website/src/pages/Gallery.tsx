@@ -47,7 +47,7 @@ export default function Gallery() {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary">Photo Gallery</h1>
           <p className="text-xl text-muted-foreground">
-            A glimpse into the joyful, creative, and engaging moments at Little Stars. Click any photo to view it in full.
+            A glimpse into the joyful, creative, and engaging moments at our daycare. Click any photo to view it in full.
           </p>
         </div>
 

@@ -6,12 +6,9 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
 const timeline = [
-  { year: "2009", title: "Little Stars Founded", desc: "Dr. Sarah Mitchell opens Little Stars with just 12 children and a dream of exceptional childcare." },
-  { year: "2012", title: "NAEYC Accreditation", desc: "We earn our first National Association for the Education of Young Children accreditation." },
-  { year: "2015", title: "Expanded Facility", desc: "A complete facility renovation doubles our capacity and adds dedicated outdoor learning gardens." },
-  { year: "2018", title: "After School Program Launched", desc: "Community demand leads us to expand with our After School Care program serving local elementary students." },
-  { year: "2022", title: "Award-Winning Curriculum", desc: "Our preschool curriculum receives the Springfield Early Education Excellence Award." },
-  { year: "2024", title: "15 Years of Joyful Learning", desc: "We celebrate 15 years of nurturing hundreds of families and welcoming our 400th enrolled child." },
+  { year: "2021", title: "The Journey Begins", desc: "Started our dedicated childcare journey, working with children from 1 to 5 years of age." },
+  { year: "2022", title: "Growing Confidence", desc: "Expanded our experience to both small and large groups of children, focusing on individualized care." },
+  { year: "2024", title: "3 Years of Excellence", desc: "Celebrating 3 years of providing a nurturing, play-based environment for early childhood development." }
 ];
 
 const accreditations = [
@@ -88,7 +85,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-serif font-bold text-primary mb-4">Our Philosophy</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                At Little Stars, we believe that early childhood is the most critical period of development.
+                At our daycare, we believe that early childhood is the most critical period of development.
                 Our play-based curriculum is thoughtfully designed to foster curiosity, creativity, and a lifelong love of learning —
                 while ensuring each child feels genuinely safe, seen, and celebrated.
               </p>
@@ -126,7 +123,7 @@ export default function About() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-4">Our Journey</h2>
-            <p className="text-lg text-muted-foreground">15 years of milestones, growth, and joyful moments.</p>
+            <p className="text-lg text-muted-foreground">3 years of milestones, growth, and joyful moments.</p>
           </div>
           <div className="relative">
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-0.5" />
@@ -231,7 +228,7 @@ export default function About() {
         <div className="container mx-auto px-4 max-w-3xl text-center space-y-8">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary">Join Our Team</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            We are always looking for passionate, dedicated educators to join the Little Stars family. If you love working with children and believe in the power of early learning, we would love to hear from you.
+            We are always looking for passionate, dedicated people to join our daycare family. If you love working with children and believe in the power of early learning, we would love to hear from you.
           </p>
           <Button asChild size="lg" className="rounded-full shadow-md">
             <Link href="/contact">Get in Touch</Link>

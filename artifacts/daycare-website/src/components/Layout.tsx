@@ -137,7 +137,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <Link href="/" className="font-serif text-2xl font-bold text-white">403-971-5441</Link>
               </div>
               <p className="text-primary-foreground/80 leading-relaxed text-sm">
-                A warm, trusted childcare center dedicated to nurturing young minds and fostering joyful learning for over 15 years.
+                A warm, trusted childcare center dedicated to nurturing young minds and fostering joyful learning.
               </p>
               <p className="text-brand-yellow leading-relaxed text-sm font-semibold">
                 Qualifications: ECE Level 2, CPR & First Aid<br />

@@ -103,7 +103,7 @@ export default function Enroll() {
             </motion.div>
             <h2 className="text-3xl font-serif font-bold text-primary">Application Received!</h2>
             <p className="text-lg text-muted-foreground">
-              Thank you for trusting Little Stars Daycare. We have received your enrollment application and our director will be in touch within 2 business days to discuss the next steps and schedule a tour.
+              Thank you for trusting our daycare. We have received your enrollment application and our director will be in touch within 2 business days to discuss the next steps and schedule a tour.
             </p>
             <div className="pt-8">
               <Button onClick={() => setLocation("/")} size="xl" className="rounded-full">
@@ -122,7 +122,7 @@ export default function Enroll() {
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary">Enrollment Application</h1>
           <p className="text-xl text-muted-foreground">
-            Take the first step towards joining the Little Stars family.
+            Take the first step towards joining our childcare family.
           </p>
         </div>
 

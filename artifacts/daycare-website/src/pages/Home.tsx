@@ -42,7 +42,7 @@ export default function Home() {
           >
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-yellow/20 text-brand-yellow font-semibold text-sm">
               <Star className="w-4 h-4 fill-brand-yellow text-brand-yellow" />
-              Trusted by parents for 15+ years
+              3 years of dedicated childcare experience
             </motion.div>
             
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-serif font-bold text-foreground leading-tight">

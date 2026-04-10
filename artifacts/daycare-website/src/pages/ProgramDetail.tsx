@@ -90,7 +90,7 @@ export default function ProgramDetail() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground font-medium">Schedule</p>
-                      <p className="font-bold text-foreground">{program.schedule}</p>
+                      <p className="font-bold text-foreground">Mon-Fri (Weekend private care available)</p>
                     </div>
                   </div>
 
@@ -110,7 +110,7 @@ export default function ProgramDetail() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground font-medium">Tuition</p>
-                      <p className="font-bold text-foreground">${program.monthlyFee} / month</p>
+                      <p className="font-bold text-foreground">Full time $326 / Part time $230</p>
                     </div>
                   </div>
                 </div>

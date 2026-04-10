@@ -27,8 +27,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <div className="bg-primary text-primary-foreground py-2 text-sm font-medium hidden md:block">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <a href="tel:+15551234567" className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors">
-              <Phone className="w-4 h-4" /> (555) 123-4567
+            <a href="tel:4039715441" className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors">
+              <Phone className="w-4 h-4" /> 403-971-5441
             </a>
             <a href="mailto:hello@littlestars.com" className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors">
               <Mail className="w-4 h-4" /> hello@littlestars.com
@@ -36,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" /> 123 Sunshine Blvd, Springfield
+              <MapPin className="w-4 h-4" /> 248 Marquis Hts SE, Calgary AB
             </span>
             <div className="flex items-center gap-3 border-l border-white/20 pl-6">
               <a href="#" aria-label="Facebook" className="hover:text-primary-foreground/70 transition-colors"><Facebook className="w-4 h-4" /></a>
@@ -57,7 +57,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center rotate-3">
               <Star className="w-6 h-6 text-primary fill-primary" />
             </div>
-            <Link href="/" className="font-serif text-2xl font-bold text-primary">Little Stars</Link>
+            <Link href="/" className="font-serif text-2xl font-bold text-primary">403-971-5441</Link>
           </div>
 
           {/* Desktop Nav */}
@@ -134,10 +134,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <div className="w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center -rotate-3 group-hover:rotate-0 transition-transform">
                   <Star className="w-6 h-6 text-primary fill-primary" />
                 </div>
-                <Link href="/" className="font-serif text-2xl font-bold text-white">Little Stars</Link>
+                <Link href="/" className="font-serif text-2xl font-bold text-white">403-971-5441</Link>
               </div>
               <p className="text-primary-foreground/80 leading-relaxed text-sm">
                 A warm, trusted childcare center dedicated to nurturing young minds and fostering joyful learning for over 15 years.
+              </p>
+              <p className="text-brand-yellow leading-relaxed text-sm font-semibold">
+                Qualifications: ECE Level 2, CPR & First Aid<br />
+                Experience: 3 years of working experience with children of different ages from 1 to 5 years in small and large groups.
               </p>
               {/* Social Links */}
               <div className="flex items-center gap-4 pt-2">
@@ -184,18 +188,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <ul className="space-y-3 text-sm text-primary-foreground/80">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 shrink-0 text-brand-coral mt-0.5" />
-                  <span>123 Sunshine Blvd<br />Springfield, ST 12345</span>
+                  <span>248 Marquis Hts SE<br />Calgary, AB</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-5 h-5 shrink-0 text-brand-coral" />
-                  <a href="tel:+15551234567" className="hover:text-white transition-colors">(555) 123-4567</a>
+                  <a href="tel:4039715441" className="hover:text-white transition-colors">403-971-5441</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-5 h-5 shrink-0 text-brand-coral" />
                   <a href="mailto:hello@littlestars.com" className="hover:text-white transition-colors">hello@littlestars.com</a>
                 </li>
                 <li className="pt-2 text-primary-foreground/60">
-                  Mon–Fri: 7:00 AM – 6:00 PM
+                  Monday to Friday<br />
+                  <span className="text-brand-yellow/80">Private weekend care available</span>
                 </li>
               </ul>
             </div>
@@ -203,7 +208,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-white/10 text-primary-foreground/60 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; {new Date().getFullYear()} Little Stars Daycare. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} 403-971-5441 Daycare. All rights reserved.</p>
             <div className="flex gap-6 items-center">
               <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
               <Link href="/contact" className="hover:text-white transition-colors">Privacy Policy</Link>

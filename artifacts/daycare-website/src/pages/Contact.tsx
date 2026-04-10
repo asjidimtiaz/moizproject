@@ -63,9 +63,9 @@ export default function Contact() {
             <Card className="border-none shadow-lg bg-brand-yellow/10">
               <CardContent className="p-8 space-y-8">
                 {[
-                  { icon: MapPin, iconColor: "text-brand-coral", title: "Location", content: <>123 Sunshine Blvd<br />Springfield, ST 12345</> },
-                  { icon: Phone, iconColor: "text-brand-blue", title: "Phone", content: "(555) 123-4567" },
-                  { icon: Mail, iconColor: "text-brand-green", title: "Email", content: "hello@littlestars.com" },
+                  { icon: MapPin, iconColor: "text-brand-coral", title: "Location", content: <>248 Marquis Hts SE<br />Calgary, AB</> },
+                  { icon: Phone, iconColor: "text-brand-blue", title: "Phone", content: "403-971-5441" },
+                  { icon: Mail, iconColor: "text-brand-green", title: "Email", content: "hello@403-971-5441.com" },
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -91,8 +91,8 @@ export default function Contact() {
                   <div>
                     <h3 className="font-serif font-bold text-lg text-primary">Hours of Operation</h3>
                     <ul className="text-muted-foreground mt-1 space-y-1 text-sm">
-                      <li className="flex justify-between gap-8"><span>Mon – Fri:</span> <span className="font-semibold text-foreground">7:00 AM – 6:00 PM</span></li>
-                      <li className="flex justify-between gap-8"><span>Sat – Sun:</span> <span className="font-semibold text-foreground">Closed</span></li>
+                      <li className="flex justify-between gap-8"><span>Mon – Fri:</span> <span className="font-semibold text-foreground">Monday to Friday</span></li>
+                      <li className="flex justify-between gap-8"><span>Private:</span> <span className="font-semibold text-foreground">Weekend care available</span></li>
                     </ul>
                   </div>
                 </div>
@@ -103,8 +103,8 @@ export default function Contact() {
             <Card className="border-none shadow-lg overflow-hidden">
               <div className="h-64 bg-muted relative">
                 <iframe
-                  title="Little Stars Daycare Location"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-89.68%2C39.75%2C-89.62%2C39.81&layer=mapnik&marker=39.781%2C-89.649"
+                  title="Daycare Location Map"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-114.15%2C50.95%2C-114.00%2C51.10&layer=mapnik&marker=51.0447%2C-114.0719"
                   className="w-full h-full"
                   style={{ border: 0, filter: "saturate(0.8) contrast(0.9)" }}
                   loading="lazy"
@@ -117,7 +117,7 @@ export default function Contact() {
               </div>
               <CardContent className="p-4 bg-white">
                 <p className="text-sm font-medium text-center text-muted-foreground">
-                  📍 123 Sunshine Blvd, Springfield, ST 12345
+                  📍 248 Marquis Hts SE, Calgary, AB
                 </p>
               </CardContent>
             </Card>

@@ -193,7 +193,7 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-white">Hear from Our Families</h2>
-            <p className="text-primary-foreground/80 max-w-2xl mx-auto text-lg">Don't just take our word for it. Here's what parents have to say about their experience with Little Stars.</p>
+            <p className="text-primary-foreground/80 max-w-2xl mx-auto text-lg">Don't just take our word for it. Here's what parents have to say about their experience with 403-971-5441 Daycare.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">

@@ -61,7 +61,7 @@ export default function Programs() {
               <div className="grid grid-cols-2 gap-4 py-4">
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <Clock className="w-5 h-5 text-primary" />
-                  <span className="text-sm">{program.schedule}</span>
+                  <span className="text-sm">Mon-Fri (Weekend private care available)</span>
                 </div>
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <Users className="w-5 h-5 text-primary" />
@@ -69,7 +69,7 @@ export default function Programs() {
                 </div>
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <DollarSign className="w-5 h-5 text-primary" />
-                  <span className="text-sm">${program.monthlyFee}/mo</span>
+                  <span className="text-sm">Full time $326 / Part time $230</span>
                 </div>
               </div>
 

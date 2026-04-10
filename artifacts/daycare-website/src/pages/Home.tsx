@@ -70,7 +70,7 @@ export default function Home() {
         <section className="py-16 bg-white z-20 relative -mt-8 mx-4 md:mx-auto md:max-w-5xl rounded-3xl shadow-xl border border-border/50">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-8">
             <div className="space-y-2">
-              <h3 className="text-4xl font-serif font-bold text-primary">{stats.yearsInOperation}+</h3>
+              <h3 className="text-4xl font-serif font-bold text-primary">3</h3>
               <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Years of Care</p>
             </div>
             <div className="space-y-2">

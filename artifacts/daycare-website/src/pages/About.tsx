@@ -44,7 +44,7 @@ export default function About() {
           <div className="bg-white rounded-3xl shadow-xl p-8 border border-border/50">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { value: `${stats.yearsInOperation}+`, label: "Years Experience", color: "text-brand-blue" },
+                { value: `3`, label: "Years Experience", color: "text-brand-blue" },
                 { value: stats.totalChildren, label: "Children Taught", color: "text-brand-coral" },
                 { value: stats.totalStaff, label: "Expert Educators", color: "text-brand-yellow" },
                 { value: `${stats.satisfactionRate}%`, label: "Happy Parents", color: "text-brand-green" },

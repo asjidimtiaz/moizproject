@@ -30,8 +30,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <a href="tel:4039715441" className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors">
               <Phone className="w-4 h-4" /> 403-971-5441
             </a>
-            <a href="mailto:hello@littlestars.com" className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors">
-              <Mail className="w-4 h-4" /> hello@littlestars.com
+            <a href="mailto:hello@4039715441.com" className="flex items-center gap-2 hover:text-primary-foreground/80 transition-colors">
+              <Mail className="w-4 h-4" /> hello@4039715441.com
             </a>
           </div>
           <div className="flex items-center gap-6">
@@ -196,7 +196,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-5 h-5 shrink-0 text-brand-coral" />
-                  <a href="mailto:hello@littlestars.com" className="hover:text-white transition-colors">hello@littlestars.com</a>
+                  <a href="mailto:hello@4039715441.com" className="hover:text-white transition-colors">hello@4039715441.com</a>
                 </li>
                 <li className="pt-2 text-primary-foreground/60">
                   Monday to Friday<br />

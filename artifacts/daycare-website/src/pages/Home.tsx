@@ -46,7 +46,7 @@ export default function Home() {
             </motion.div>
             
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-serif font-bold text-foreground leading-tight">
-              Where little stars <span className="text-primary">shine brightest.</span>
+              Where your child’s <span className="text-primary">future begins.</span>
             </motion.h1>
             
             <motion.p variants={fadeIn} className="text-xl text-foreground/70 max-w-lg leading-relaxed">

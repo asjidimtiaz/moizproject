@@ -76,7 +76,7 @@ export default function About() {
           >
             <img
               src="/images/hero.png"
-              alt="Children playing at Little Stars"
+              alt="Children playing at our daycare"
               className="w-full h-full object-cover -rotate-3 scale-110"
               onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&q=80'; }}
             />

@@ -1,10 +1,11 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
+import fs from "fs";
 import { pinoHttp } from "pino-http";
 import type { IncomingMessage, ServerResponse } from "http";
-import router from "./routes/index.js";
-import { logger } from "./lib/logger.js";
+import router from "./routes/index";
+import { logger } from "./lib/logger";
 
 const app = express() as any;
 
@@ -40,19 +41,28 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/uploads", express.static(path.join(process.cwd(), "uploads")));
+// Serve uploads if directory exists
+const uploadsPath = path.join(process.cwd(), "uploads");
+if (fs.existsSync(uploadsPath)) {
+  app.use("/api/uploads", express.static(uploadsPath));
+}
+
 app.use("/api", router);
 
-app.use(express.static(path.join(process.cwd(), "public")));
-
-// Catch-all fallback for React Single Page Application
-app.use((req: any, res: any, next: any) => {
-  if (req.method === 'GET' && !req.path.startsWith('/api')) {
-    res.sendFile(path.join(process.cwd(), "public", "index.html"));
-  } else {
-    next();
-  }
-});
+// Serve frontend static assets if directory exists
+const publicPath = path.join(process.cwd(), "public");
+if (fs.existsSync(publicPath)) {
+  app.use(express.static(publicPath));
+  
+  // Catch-all fallback for React Single Page Application
+  app.use((req: any, res: any, next: any) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+      res.sendFile(path.join(publicPath, "index.html"));
+    } else {
+      next();
+    }
+  });
+}
 
 // Global API Error Handler
 app.use((err: any, req: any, res: any, next: any) => {
@@ -65,3 +75,4 @@ app.use((err: any, req: any, res: any, next: any) => {
 });
 
 export default app;
+

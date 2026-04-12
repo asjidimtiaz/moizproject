@@ -1,4 +1,4 @@
-import app from '../artifacts/api-server/src/app.js';
+import app from '../artifacts/api-server/src/app';
 
 // Configure Vercel to not parse the body natively, 
 // allowing Express's express.json() to consume the raw stream.

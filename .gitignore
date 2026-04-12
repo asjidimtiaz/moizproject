@@ -3,6 +3,7 @@
 # compiled output
 dist
 dist-vercel
+api/app.bundle.js
 public
 tmp
 out-tsc

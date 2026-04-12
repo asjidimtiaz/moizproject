@@ -8,6 +8,15 @@ import { logger } from "./lib/logger.js";
 
 const app = express() as any;
 
+// Startup verification
+const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+if (dbUrl) {
+  logger.info("Environment: DATABASE_URL is detected");
+} else {
+  logger.warn("Environment: DATABASE_URL is NOT detected!");
+}
+
+
 app.use(
   pinoHttp({
     logger,

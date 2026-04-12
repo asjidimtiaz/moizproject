@@ -1,6 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import * as schema from "./schema/index";
+import * as schema from "./schema/index.js";
 import { sql as drizzleSql } from "drizzle-orm";
 
 const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
@@ -35,7 +35,7 @@ export async function checkDatabaseConnection() {
   }
 }
 
-export * from "./schema/index";
+export * from "./schema/index.js";
 
 
 

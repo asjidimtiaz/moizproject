@@ -4,8 +4,8 @@ import path from "path";
 import fs from "fs";
 import { pinoHttp } from "pino-http";
 import type { IncomingMessage, ServerResponse } from "http";
-import router from "./routes/index";
-import { logger } from "./lib/logger";
+import router from "./routes/index.js";
+import { logger } from "./lib/logger.js";
 
 const app = express() as any;
 

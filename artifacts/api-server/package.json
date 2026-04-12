@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node --env-file=../../.env -e \"process.env.NODE_ENV='development';require('child_process').execSync('pnpm run build && pnpm run start', {stdio:'inherit'})\"",
     "build": "node ./build.mjs",
+    "build:app": "node ./build-app.mjs",
     "start": "node --env-file=../../.env --enable-source-maps ./dist/index.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
